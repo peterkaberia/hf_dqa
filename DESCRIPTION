@@ -1,0 +1,26 @@
+Package: dataAudit
+Title: Data Audit and Quality Checker
+Version: 0.0.0.9000
+Authors@R: 
+    person("David", "Kariuki", , "hello@damurka.com", role = c("aut", "cre"))
+Description: A Shiny application for auditing and validating data quality by comparing mined data against historical records.
+License: AGPL (>= 3)
+Imports: 
+    config,
+    dplyr,
+    golem,
+    shiny,
+    bslib,
+    dplyr,
+    tidyr,
+    purrr,
+    readxl,
+    ggplot2,
+    reactable,
+    pkgload
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
