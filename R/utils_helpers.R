@@ -44,7 +44,7 @@ load_data <- function(path, sheet_names) {
 #' @export
 flag_discrepancies <- function(data_old, data_new, threshold = 0.05) {
   data_old %>%
-    inner_join(data_new, by = c("district", "year", "month"), suffix = c("_old", "_new")) %>%
+    full_join(data_new, by = c("district", "year", "month"), suffix = c("_old", "_new")) %>%
     mutate(
       across(ends_with('_old'), ~ {
         diff <-  abs(. - get(sub("_old", "_new", cur_column())))
@@ -101,7 +101,7 @@ summarize_discrepancies <- function(discrepancies) {
 generate_heatmap <- function(summary) {
   summary %>%
     pivot_longer(cols = -year, names_to = 'vaccine', values_to = 'value') %>%
-    drop_na() %>%
+    #drop_na() %>%
     ggplot(aes(x = year, y = vaccine, fill = value)) +
       geom_tile(color = "black", size = 0.5) +
       geom_text(aes(label = round(value, 1)), color = "black", size = 5) +

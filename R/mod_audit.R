@@ -41,12 +41,16 @@ mod_audit_server <- function(id){
 
     data_old <- reactive({
       req(input$data_old)
-      load_data(input$data_old$datapath, c('Service_data_1', 'Service_data_2', 'Service_data_3'))
+      load_data(input$data_old$datapath, c('Service_data_1', 'Service_data_2', 'Service_data_3', "Reporting_completeness")) |>
+        select(district, year, month,any_of(c("bcg", "penta1", "penta2", "penta3", "measles1", "measles2", "opv1", "opv2",
+                                              "opv3", "pcv1" , "pcv2", "pcv3", "rota1", "rota2", "ipv1", "ipv2", "anc1" )), ends_with("reporting_rate"))
     })
 
     data_new <- reactive({
       req(input$data_new)
-      load_data(input$data_new$datapath, c('Service_data_1', 'Service_data_2', 'Service_data_3'))
+      load_data(input$data_new$datapath, c('Service_data_1', 'Service_data_2', 'Service_data_3', "Reporting_completeness")) |>
+      select(district, year, month,any_of(c("bcg", "penta1", "penta2", "penta3", "measles1", "measles2", "opv1", "opv2",
+        "opv3", "pcv1" , "pcv2", "pcv3", "rota1", "rota2", "ipv1", "ipv2", "anc1" )), ends_with("reporting_rate"))
     })
 
     flagged_discrepancies <- eventReactive(input$process, {
