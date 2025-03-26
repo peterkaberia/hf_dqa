@@ -1,10 +1,10 @@
 name: dataAudit
 title: dataAudit
-username: damurka
-account: damurka
+username: peterkaberia
+account: peterkaberia
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 14326984
 bundleId: 9996590
-url: https://damurka.shinyapps.io/dataAudit/
+url: https://pmkaberia.shinyapps.io/dataAudit/
 version: 1
