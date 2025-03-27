@@ -101,7 +101,7 @@ summarize_discrepancies <- function(discrepancies) {
 generate_heatmap <- function(summary) {
   summary %>%
     pivot_longer(cols = -year, names_to = 'vaccine', values_to = 'value') %>%
-    #drop_na() %>%
+    drop_na() %>%
     ggplot(aes(x = year, y = vaccine, fill = value)) +
       geom_tile(color = "black", size = 0.5) +
       geom_text(aes(label = round(value, 1)), color = "black", size = 5) +
