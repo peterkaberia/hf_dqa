@@ -11,5 +11,8 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom rlang check_required
+#' @importFrom rlang is_scalar_integerish
+#' @importFrom stringr str_detect
 ## usethis namespace: end
 NULL
