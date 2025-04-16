@@ -23,8 +23,8 @@ output: github_document
 
 You can install the development version of `{dataAudit}` like so:
 
-```{r}
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+```{r, eval = FALSE}
+devtools::install_github('aphrcwaro/data_audit')
 ```
 
 ## Run
@@ -35,26 +35,8 @@ You can launch the application by running:
 dataAudit::run_app()
 ```
 
-## About
 
-You are reading the doc about version : `r golem::pkg_version()`
+## Code of Conduct
 
-This README has been compiled on the
-
-```{r}
-Sys.time()
-```
-
-Here are the tests results and package coverage:
-
-```{r, error = TRUE}
-devtools::check(quiet = TRUE)
-```
-
-```{r echo = FALSE}
-unloadNamespace("dataAudit")
-```
-
-```{r, error = TRUE}
-covr::package_coverage()
-```
+Please note that the dataAudit project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

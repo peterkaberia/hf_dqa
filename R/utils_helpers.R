@@ -1,35 +1,3 @@
-#' Load and Clean Data from Excel Sheets
-#'
-#' Reads multiple sheets from an Excel file, cleans column names, removes unnecessary
-#' rows, and converts relevant columns to numeric format for analysis.
-#'
-#' @param path A string specifying the file path to the Excel file.
-#' @param sheet_names A character vector of sheet names to read from the Excel file.
-#'
-#' @return A cleaned `tibble` containing merged data from the specified sheets.
-#'
-#' @export
-load_data <- function(path, sheet_names) {
-  sheet_data <- map(sheet_names, ~ {
-    tryCatch({
-      read_excel(path, sheet = .x) %>%
-        rename_with(~ tolower(gsub(' ', '', .))) %>%
-        slice(-c(1,2)) %>%
-        select(-starts_with('..')) %>%
-        rename_with(~ gsub('\\.\\.\\.\\d+$', '', .)) %>%
-        mutate(
-          year = as.integer(year),
-          month = factor(month, levels = month.name),  # Ensure months are ordered
-          across(-c(district, year, month), ~ suppressWarnings(as.numeric(.))) # Convert all other columns to numeric
-        )
-    }, error = function(e) NULL
-    )
-  }) %>%
-    discard(~ is.null(.) || nrow(.) == 0)
-
-  reduce(sheet_data, left_join, by = c("district", "year", "month"))
-}
-
 #' Flag Data Discrepancies Between Old and New Data
 #'
 #' Compares `data_old` and `data_new`, flagging discrepancies where values differ
